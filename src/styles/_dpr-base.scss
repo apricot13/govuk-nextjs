@@ -1,0 +1,8 @@
+// include this file in modules
+
+// gov uk settings
+$govuk-assets-path: "/govuk-assets/";
+
+// 'Base' includes everything from settings, tools and helpers. Nothing
+// in the base outputs any CSS.
+@import "node_modules/govuk-frontend/dist/govuk/base";

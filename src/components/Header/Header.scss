@@ -1,0 +1,14 @@
+@import "@/styles/dpr-base";
+@import "node_modules/govuk-frontend/dist/govuk/components/header/index";
+
+// Basic content styles for typography, links etc. Approximately 10% of
+// the CSS output if you include everything.
+
+@import "node_modules/govuk-frontend/dist/govuk/core/index";
+
+// Objects include things like the page template, grid and form groups.
+// Approximately 5% of the CSS output if you include everything.
+
+@import "node_modules/govuk-frontend/dist/govuk/objects/index";
+
+@import "node_modules/govuk-frontend/dist/govuk/components/accordion/index";

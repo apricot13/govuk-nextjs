@@ -7,9 +7,17 @@ export interface AppConfig {
     documentsPublicEndpoint: boolean;
   };
   council: CouncilConfig | null;
+  navigation: {
+    label: string;
+    href: string;
+    type?: string;
+  }[];
 }
 
 export interface CouncilConfig {
   slug: string;
   name: string;
+  links?: {
+    privacyPolicy?: string;
+  };
 }

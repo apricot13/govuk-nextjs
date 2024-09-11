@@ -15,7 +15,7 @@ export default function CouncilTestPage({
 
   return (
     <>
-      hello {council}
+      hello {council} test page
       {appConfig?.council?.name}
     </>
   );

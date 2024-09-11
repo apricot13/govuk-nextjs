@@ -14,5 +14,22 @@ export const getAppConfig = (council?: string): AppConfig => {
       documentsPublicEndpoint: true,
     },
     council: council ? (getCouncilConfig(council) ?? null) : null,
+    navigation: [
+      {
+        label: "Application search",
+        href: "",
+        type: "council",
+      },
+      {
+        label: "Understanding planning",
+        href: "/planning-process",
+        type: "council",
+      },
+      {
+        label: "test",
+        href: "/test",
+        type: "council",
+      },
+    ],
   };
 };

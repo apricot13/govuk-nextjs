@@ -1,7 +1,7 @@
 // import { GovUkHeader } from "./GovUkHeader";
 import "./Header.scss";
 
-export const Header = async () => {
+export const Header = () => {
   return (
     <>
       <header className="govuk-header" data-module="govuk-header">

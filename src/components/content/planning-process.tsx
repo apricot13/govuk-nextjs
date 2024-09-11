@@ -13,92 +13,218 @@ export interface ContentPlanningProcessType {
   }[];
 }
 
-export const contentPlanningProcess = (): ContentPlanningProcessType[] => [
+export const contentApplicationStatuses = [
   {
-    title: "Application statuses",
+    title: "Consultation in progress",
+    content: (
+      <>
+        <p className="govuk-body">
+          Once an application has been submitted, there are 21 days (not
+          including bank holidays) where neighbours and the local community must
+          be consulted. This is the statutory consultation period. It can go on
+          for longer than 21 working days, but it cannot be any less. The
+          council cannot make a decision until the statutory consultation period
+          is over.
+        </p>
+        <p className="govuk-body">
+          During this time and comments can be submitted for consideration by
+          the planning team. Comments submitted after the statutory consultation
+          period are usually considered if they are submitted before a decision
+          is made.{" "}
+        </p>
+      </>
+    ),
+  },
+  {
+    title: "Assessment in progress",
+    content: (
+      <>
+        <p className="govuk-body">
+          Once the consultation has been complete, planning applications are
+          assessed. The application and all it&apos;s documentation is checked
+          and considered. Comments are read and considered.
+        </p>
+        <p className="govuk-body">
+          A decision notice is created containing the decision the council
+          makes. The notice sometimes includes reasons for the decision, and
+          responses to significant points raised by comments.
+        </p>
+      </>
+    ),
+  },
+  {
+    title: "Determined",
+    content: (
+      <>
+        <p className="govuk-body">
+          A determined appliction has had a decision made about it, so it has
+          completed its journey through the appliction process. The{" "}
+          <a
+            href="#decisions"
+            className="govuk-link govuk-link--no-visited-state"
+          >
+            decision
+          </a>{" "}
+          is published with all the supporting documentation. Decisions can be
+          appealed.
+        </p>
+        <p className="govuk-body">
+          Determined planning applications which have been{" "}
+          <a
+            href="#refused"
+            className="govuk-link govuk-link--no-visited-state"
+          >
+            refused
+          </a>{" "}
+          can be appealed by applicants or their agents.
+        </p>
+      </>
+    ),
+  },
+  {
+    title: "Withdrawn",
+    content: (
+      <>
+        <p className="govuk-body">
+          Planning applications can be withdrawn by the applicant, or sometimes
+          by the council. This usually means they no longer intend to do the
+          work they applied for. It can also mean they have decided to
+          significantly change the proposed work, and may submit a new planning
+          application at a later date.
+        </p>
+      </>
+    ),
+  },
+];
+
+export const contentApplicationTypes = [
+  {
+    title: "Householder planning application",
+    content: (
+      <p className="govuk-body">
+        Applying for planning permission to make changes to a single house. This
+        does not include works to flats.
+      </p>
+    ),
+  },
+  {
+    title: "Full planning permission",
+    linked: true,
+    content: (
+      <p className="govuk-body">
+        These are the most common type of planning application, and cover a wide
+        array of proposals. This can include things like extracting minerals,
+        but most applications are covered by the following three kinds of full
+        planning permission:
+      </p>
+    ),
     children: [
       {
-        title: "Consultation in progress",
+        title: "Minor and changes of use",
         content: (
-          <>
-            <p className="govuk-body">
-              Once an application has been submitted, there are 21 days (not
-              including bank holidays) where neighbours and the local community
-              must be consulted. This is the statutory consultation period. It
-              can go on for longer than 21 working days, but it cannot be any
-              less. The council cannot make a decision until the statutory
-              consultation period is over.
-            </p>
-            <p className="govuk-body">
-              During this time and comments can be submitted for consideration
-              by the planning team. Comments submitted after the statutory
-              consultation period are usually considered if they are submitted
-              before a decision is made.{" "}
-            </p>
-          </>
+          <p className="govuk-body">
+            Applying for planning permission to extend or alter a flat or flats,
+            or a non-residential property, or change the use of a property. Also
+            to get permission to construct a small building or buildings, which
+            can be residential or non-residential.
+          </p>
         ),
       },
       {
-        title: "Assessment in progress",
+        title: "Major",
         content: (
-          <>
-            <p className="govuk-body">
-              Once the consultation has been complete, planning applications are
-              assessed. The application and all it&apos;s documentation is
-              checked and considered. Comments are read and considered.
-            </p>
-            <p className="govuk-body">
-              A decision notice is created containing the decision the council
-              makes. The notice sometimes includes reasons for the decision, and
-              responses to significant points raised by comments.
-            </p>
-          </>
-        ),
-      },
-      {
-        title: "Determined",
-        content: (
-          <>
-            <p className="govuk-body">
-              A determined appliction has had a decision made about it, so it
-              has completed its journey through the appliction process. The{" "}
-              <a
-                href="#decisions"
-                className="govuk-link govuk-link--no-visited-state"
-              >
-                decision
-              </a>{" "}
-              is published with all the supporting documentation. Decisions can
-              be appealed.
-            </p>
-            <p className="govuk-body">
-              Determined planning applications which have been{" "}
-              <a
-                href="#refused"
-                className="govuk-link govuk-link--no-visited-state"
-              >
-                refused
-              </a>{" "}
-              can be appealed by applicants or their agents.
-            </p>
-          </>
-        ),
-      },
-      {
-        title: "Withdrawn",
-        content: (
-          <>
-            <p className="govuk-body">
-              Planning applications can be withdrawn by the applicant, or
-              sometimes by the council. This usually means they no longer intend
-              to do the work they applied for. It can also mean they have
-              decided to significantly change the proposed work, and may submit
-              a new planning application at a later date.
-            </p>
-          </>
+          <p className="govuk-body">
+            Applying for planning permission to significantly extend a building
+            or buildings, or to construct a large building or buildings. These
+            can be residential or non-residential.
+          </p>
         ),
       },
     ],
+  },
+  {
+    title: "Outline planning permission",
+    linked: true,
+    content: (
+      <p className="govuk-body">
+        Assesses whether the nature of a development is acceptable, with details
+        reserved for future applications.
+      </p>
+    ),
+  },
+  {
+    title: "Lawful development certificate",
+    linked: true,
+    content: (
+      <>
+        <p className="govuk-body">
+          Applying for a certificate which verifies that something being
+          proposed, or which has already been built, is lawful.
+        </p>
+        <p className="govuk-body">
+          For existing buildings or changes to buildings, this certificate can
+          be applied for retrospectively, and there are many ways that something
+          can be deemed lawful in this situation.
+        </p>
+      </>
+    ),
+  },
+  {
+    title: "Prior approval",
+    linked: true,
+    content: (
+      <>
+        <p className="govuk-body">
+          This checks whether the proposal is considered &apos;permitted
+          development&apos; according to national legislation, and assesses it
+          against specific criteria before it can take place. If the proposal
+          does not receive prior approval, or is no eligible for prior approval,
+          then a planning application needs to be submitted. If the proposal is
+          concidered &apos;permitted development&apos; then it can be done
+          without further planning applications.
+        </p>
+        <p className="govuk-body">
+          This covers a wide range of changes or additions to buildings,
+          including certain changes of use, extensions to buildings,
+          non-domestic solar panels, certain demolitions, etc. You can find out
+          about what is eligible for permitted development by reading{" "}
+          <a
+            href="https://www.gov.uk/guidance/when-is-permission-required#What-are-permitted-development-rights"
+            target="_blank"
+          >
+            the gov.uk guidance on planning.
+          </a>
+        </p>
+      </>
+    ),
+  },
+  {
+    title: "Approval of reserved matters",
+    content: (
+      <p className="govuk-body">
+        An application for reserved matters provides details of a development
+        once its principle has been agreed via outline planning permission. The
+        level of details are similar to a full planning application.
+      </p>
+    ),
+  },
+  {
+    title: "Non-planning consents",
+    content: (
+      <p className="govuk-body">
+        These kinds of applications cover things such as getting consent for
+        advirtisements, making changes to protected trees, or dealing with
+        hazardous substances. The description of these application types will
+        provide more information about them.
+      </p>
+    ),
+  },
+];
+
+export const contentPlanningProcess = (): ContentPlanningProcessType[] => [
+  {
+    title: "Application statuses",
+    children: contentApplicationStatuses,
   },
   {
     title: "Important dates",
@@ -289,129 +415,6 @@ export const contentPlanningProcess = (): ContentPlanningProcessType[] => [
   },
   {
     title: "Application types",
-    children: [
-      {
-        title: "Householder planning application",
-        content: (
-          <p className="govuk-body">
-            Applying for planning permission to make changes to a single house.
-            This does not include works to flats.
-          </p>
-        ),
-      },
-      {
-        title: "Full planning permission",
-        linked: true,
-        content: (
-          <p className="govuk-body">
-            These are the most common type of planning application, and cover a
-            wide array of proposals. This can include things like extracting
-            minerals, but most applications are covered by the following three
-            kinds of full planning permission:
-          </p>
-        ),
-        children: [
-          {
-            title: "Minor and changes of use",
-            content: (
-              <p className="govuk-body">
-                Applying for planning permission to extend or alter a flat or
-                flats, or a non-residential property, or change the use of a
-                property. Also to get permission to construct a small building
-                or buildings, which can be residential or non-residential.
-              </p>
-            ),
-          },
-          {
-            title: "Major",
-            content: (
-              <p className="govuk-body">
-                Applying for planning permission to significantly extend a
-                building or buildings, or to construct a large building or
-                buildings. These can be residential or non-residential.
-              </p>
-            ),
-          },
-        ],
-      },
-      {
-        title: "Outline planning permission",
-        linked: true,
-        content: (
-          <p className="govuk-body">
-            Assesses whether the nature of a development is acceptable, with
-            details reserved for future applications.
-          </p>
-        ),
-      },
-      {
-        title: "Lawful development certificate",
-        linked: true,
-        content: (
-          <>
-            <p className="govuk-body">
-              Applying for a certificate which verifies that something being
-              proposed, or which has already been built, is lawful.
-            </p>
-            <p className="govuk-body">
-              For existing buildings or changes to buildings, this certificate
-              can be applied for retrospectively, and there are many ways that
-              something can be deemed lawful in this situation.
-            </p>
-          </>
-        ),
-      },
-      {
-        title: "Prior approval",
-        linked: true,
-        content: (
-          <>
-            <p className="govuk-body">
-              This checks whether the proposal is considered &apos;permitted
-              development&apos; according to national legislation, and assesses
-              it against specific criteria before it can take place. If the
-              proposal does not receive prior approval, or is no eligible for
-              prior approval, then a planning application needs to be submitted.
-              If the proposal is concidered &apos;permitted development&apos;
-              then it can be done without further planning applications.
-            </p>
-            <p className="govuk-body">
-              This covers a wide range of changes or additions to buildings,
-              including certain changes of use, extensions to buildings,
-              non-domestic solar panels, certain demolitions, etc. You can find
-              out about what is eligible for permitted development by reading{" "}
-              <a
-                href="https://www.gov.uk/guidance/when-is-permission-required#What-are-permitted-development-rights"
-                target="_blank"
-              >
-                the gov.uk guidance on planning.
-              </a>
-            </p>
-          </>
-        ),
-      },
-      {
-        title: "Approval of reserved matters",
-        content: (
-          <p className="govuk-body">
-            An application for reserved matters provides details of a
-            development once its principle has been agreed via outline planning
-            permission. The level of details are similar to a full planning
-            application.
-          </p>
-        ),
-      },
-      {
-        title: "Non-planning consents",
-        content: (
-          <p className="govuk-body">
-            These kinds of applications cover things such as getting consent for
-            advirtisements, making changes to protected trees, or dealing with
-            hazardous substances. The description of these application types
-            will provide more information about them.
-          </p>
-        ),
-      },
-    ],
+    children: contentApplicationTypes,
   },
 ];

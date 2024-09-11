@@ -14,6 +14,7 @@ export const getAppConfig = (council?: string): AppConfig => {
       documentsPublicEndpoint: true,
     },
     council: council ? (getCouncilConfig(council) ?? null) : null,
+    resultsPerPage: 10,
     navigation: [
       {
         label: "Application search",

@@ -10,6 +10,16 @@
 
 @import "node_modules/govuk-frontend/dist/govuk/objects/index";
 
+.osl-map > * {
+  width: 28rem;
+  height: 14rem;
+
+  @media (min-width: 1090px) {
+    height: 20rem;
+  }
+  display: table-cell;
+}
+
 // The components themselves - try to only include the components you
 // are using in your project. Approximately 70% of the CSS output if
 // you include everything.

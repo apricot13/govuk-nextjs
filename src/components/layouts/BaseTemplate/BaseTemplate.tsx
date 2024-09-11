@@ -16,10 +16,7 @@ export const BaseTemplate = ({
   return (
     <>
       <SkipLink href="#main-content" />
-      <Header
-        selectedCouncil={appConfig.council}
-        availableCouncils={appConfig.councils}
-      />
+      <Header appConfig={appConfig} />
       <div className="govuk-width-container">
         <PhaseBanner />
 
@@ -31,7 +28,7 @@ export const BaseTemplate = ({
           {children}
         </main>
       </div>
-      <Footer />
+      <Footer appConfig={appConfig} />
     </>
   );
 };

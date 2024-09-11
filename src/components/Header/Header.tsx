@@ -1,7 +1,10 @@
 // import { GovUkHeader } from "./GovUkHeader";
+import { getAppConfig } from "@/config";
 import "./Header.scss";
+import Link from "next/link";
 
 export const Header = () => {
+  const appConfig = getAppConfig();
   return (
     <>
       <header className="govuk-header" data-module="govuk-header">
@@ -28,6 +31,17 @@ export const Header = () => {
           </div>
         </div>
       </header>
+      <ul>
+        {appConfig?.councils &&
+          appConfig.councils.length > 1 &&
+          appConfig.councils.map((council) => (
+            <li>
+              <Link href={`/${council}`} key={council}>
+                {council}
+              </Link>
+            </li>
+          ))}
+      </ul>
       {/* <GovUkHeader /> */}
     </>
   );

@@ -10,7 +10,5 @@ export default function PublicLayout({ children }: { children: ReactNode }) {
     notFound();
   }
 
-  return (
-    <BaseTemplate appConfig={appConfig}>public layout: {children}</BaseTemplate>
-  );
+  return <BaseTemplate appConfig={appConfig}>{children}</BaseTemplate>;
 }

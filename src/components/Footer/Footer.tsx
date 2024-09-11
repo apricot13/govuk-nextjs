@@ -2,6 +2,7 @@ import { AppConfig } from "@/types/config";
 import "./Footer.scss";
 import odpLogo from "./odp-logo.svg";
 import Image from "next/image";
+import Link from "next/link";
 
 export interface FooterProps {
   appConfig: AppConfig;
@@ -27,15 +28,15 @@ export const Footer = ({ appConfig }: FooterProps) => {
             <ul className="govuk-footer__inline-list">
               {privacyPolicy && (
                 <li className="govuk-footer__inline-list-item">
-                  <a className="govuk-footer__link" href={privacyPolicy}>
+                  <Link className="govuk-footer__link" href={privacyPolicy}>
                     Privacy policy
-                  </a>
+                  </Link>
                 </li>
               )}
               <li className="govuk-footer__inline-list-item">
-                <a className="govuk-footer__link" href={`/cookie-policy`}>
+                <Link className="govuk-footer__link" href={`/cookie-policy`}>
                   Cookie policy
-                </a>
+                </Link>
               </li>
             </ul>
             <svg

@@ -1,13 +1,6 @@
-export const buckinghamshire = {
+import { CouncilConfig } from "@/types/config";
+
+export const buckinghamshire: CouncilConfig = {
+  slug: "buckinghamshire",
   name: "Buckinghamshire",
-  logo: "buckinghamshirelogo.svg",
-  publicComments: false,
-  specialistComments: false,
-  isShowDSN: false,
-  pageContent: {
-    privacy_policy: {
-      privacy_policy_link:
-        "https://www.buckinghamshire.gov.uk/your-council/privacy/privacy-policy/",
-    },
-  },
 };

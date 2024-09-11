@@ -1,7 +1,8 @@
+import { AppConfig } from "@/types/config";
 import { getCouncilConfig, getCouncilList } from "./councilConfig";
 
 // Define the app configuration
-export const getAppConfig = (council?: string) => {
+export const getAppConfig = (council?: string): AppConfig => {
   return {
     name: "Digital Planning Register",
     description:
@@ -12,6 +13,6 @@ export const getAppConfig = (council?: string) => {
     features: {
       documentsPublicEndpoint: true,
     },
-    council: getCouncilConfig(council) ?? null,
+    council: council ? (getCouncilConfig(council) ?? null) : null,
   };
 };

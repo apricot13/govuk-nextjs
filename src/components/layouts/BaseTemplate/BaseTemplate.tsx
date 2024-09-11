@@ -2,16 +2,24 @@ import { Footer } from "@/components/Footer";
 import { PhaseBanner } from "@/components/govuk/PhaseBanner";
 import { SkipLink } from "@/components/govuk/SkipLink";
 import { Header } from "@/components/Header";
+import { AppConfig } from "@/types/config";
 
 export interface BaseTemplateProps {
+  appConfig: AppConfig;
   children?: React.ReactNode;
 }
 
-export const BaseTemplate = ({ children }: Readonly<BaseTemplateProps>) => {
+export const BaseTemplate = ({
+  appConfig,
+  children,
+}: Readonly<BaseTemplateProps>) => {
   return (
     <>
       <SkipLink href="#main-content" />
-      <Header />
+      <Header
+        selectedCouncil={appConfig.council}
+        availableCouncils={appConfig.councils}
+      />
       <div className="govuk-width-container">
         <PhaseBanner />
 

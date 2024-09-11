@@ -1,12 +1,17 @@
 // import { GovUkHeader } from "./GovUkHeader";
-import { getAppConfig } from "@/config";
+import { AppConfig } from "@/types/config";
 import "./Header.scss";
 import Link from "next/link";
 
-export const Header = () => {
-  const appConfig = getAppConfig();
+export interface HeaderProps {
+  availableCouncils: AppConfig["councils"];
+  selectedCouncil?: AppConfig["council"];
+}
+
+export const Header = ({ availableCouncils, selectedCouncil }: HeaderProps) => {
   return (
     <>
+      <noscript>look no javascript!</noscript>
       <header className="govuk-header" data-module="govuk-header">
         <div className="govuk-header__container govuk-width-container">
           <div className="govuk-header__logo">
@@ -32,16 +37,44 @@ export const Header = () => {
         </div>
       </header>
       <ul>
-        {appConfig?.councils &&
-          appConfig.councils.length > 1 &&
-          appConfig.councils.map((council) => (
-            <li>
+        {availableCouncils &&
+          availableCouncils.length > 1 &&
+          availableCouncils.map((council) => (
+            <li key={council}>
               <Link href={`/${council}`} key={council}>
                 {council}
               </Link>
             </li>
           ))}
       </ul>
+
+      {availableCouncils && availableCouncils.length > 1 && (
+        <form action="/" method="">
+          <div>
+            <select
+              className="govuk-select noscript-only council-selection"
+              id="council-select-noscript"
+              name="council"
+              defaultValue={selectedCouncil?.slug ?? "select"}
+              aria-label="Select your council"
+              autoComplete="on"
+            >
+              <option value="select">Select your council</option>
+              {availableCouncils?.map((council) => (
+                <option key={council} value={council}>
+                  {council}
+                </option>
+              ))}
+            </select>
+            <button
+              type="submit"
+              className="govuk-button custom-button council-selection"
+            >
+              Select
+            </button>
+          </div>
+        </form>
+      )}
       {/* <GovUkHeader /> */}
     </>
   );

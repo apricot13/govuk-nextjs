@@ -26,3 +26,18 @@
 
 - [Functions: generateStaticParams | Next.js](https://nextjs.org/docs/app/api-reference/functions/generate-static-params)
 - [edge middleware](https://vercel.com/docs/functions/edge-middleware)
+
+# Routing
+
+because we're doing /:council as opposed to /council/:council we need to be careful with middleware
+We can't use route.js because its historically caused issues with non-js sites
+Also `export const dynamicParams = false;` causes a 500 server error I assume because its not caching data for that route
+so..
+
+`/[council]/layout.tsx` handles static params - top down approach
+`/[council]` will handle the top level redirext if you go to
+/not-a-council then page.tsx shows not-found
+/is-a-council then the page will load
+
+That way we can then use the middleware to safely check for valid council subpages and leave nextjs routing to handle other 404s
+middleware is run on every route!

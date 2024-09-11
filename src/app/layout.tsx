@@ -1,20 +1,13 @@
 import Script from "next/script";
 import "@/styles/global.scss";
-import { Providers } from "./providers";
+import { Providers } from "@/app/providers";
 import { Metadata } from "next";
-import { BaseTemplate } from "@/components/layouts/BaseTemplate";
-import { getAppConfig } from "@/config";
 
-export function generateMetadata({
-  params,
-}: {
-  params: { council: string };
-}): Promise<Metadata | null> {
-  const council = decodeURIComponent(params.council);
-  const data = getAppConfig(council);
-  if (!data) {
-    return null;
-  }
+import { getAppConfig } from "@/config";
+import { notFound } from "next/navigation";
+
+export function generateMetadata(): Metadata {
+  const data = getAppConfig();
   const { name: title, description, image } = data;
 
   return {
@@ -40,13 +33,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const appConfig = getAppConfig();
+
+  if (!appConfig) {
+    notFound();
+  }
+
   return (
     <html lang="en" className="govuk-template">
       <title>Digital Planning Register</title>
       <body className={`govuk-template__body`}>
-        <Providers>
-          <BaseTemplate>{children}</BaseTemplate>
-        </Providers>
+        <Providers>{children}</Providers>
         <Script id="js-detection" strategy="beforeInteractive">
           {`document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');`}
         </Script>

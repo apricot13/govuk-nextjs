@@ -1,19 +1,29 @@
 import { ReactNode } from "react";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-import { getAppConfig } from "@/config";
+import { getAppConfig, getCouncilList } from "@/config";
+import { BaseTemplate } from "@/components/layouts/BaseTemplate";
+
+export function generateStaticParams() {
+  const allCouncils = getCouncilList()
+    .flatMap((council) => [
+      {
+        council,
+      },
+    ])
+    .filter(Boolean);
+
+  return allCouncils;
+}
 
 export function generateMetadata({
   params,
 }: {
   params: { council: string };
-}): Promise<Metadata | null> {
+}): Metadata {
   const council = decodeURIComponent(params.council);
-  const data = getAppConfig(council);
-  if (!data) {
-    return null;
-  }
-  const { name: title, description, image } = data;
+  const appConfig = getAppConfig(council);
+  const { name: title, description, image } = appConfig;
 
   return {
     title,
@@ -41,17 +51,18 @@ export default function SiteLayout({
   children: ReactNode;
 }) {
   const council = decodeURIComponent(params.council);
-  const data = getAppConfig(council);
+  const appConfig = getAppConfig(council);
 
-  if (!data) {
+  if (!appConfig) {
     notFound();
   }
 
   return (
     <>
-      {data.council?.name}
-      {data.council?.logo}
-      {children}
+      {appConfig.council?.name}
+      <BaseTemplate appConfig={appConfig}>
+        [council]/layout: {children}
+      </BaseTemplate>
     </>
   );
 }

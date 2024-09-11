@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getAppConfig } from "./config";
 import path from "path";
+import { notFound } from "next/navigation";
 
 export const config = {
   matcher: [
@@ -37,28 +38,9 @@ export default function middleware(request: NextRequest) {
     pathname.includes(`/${council}/`),
   );
   if (isNestedPath) {
-    console.log(pathname);
     if (!isValidPath) {
-      console.log("No access");
-      return NextResponse.redirect(new URL("/404", request.url));
+      console.log("Not a valid council - no access");
+      return NextResponse.rewrite(new URL("/404", request.url));
     }
-    // if (isValidPath) {
-    //   console.log(`Pathname matches one of the councils: ${pathname}`);
-    // } else {
-    //   console.log("Pathname does not match any council");
-    // }
   }
-
-  // const pathnameCouncil = pathname.replace(/^\/|\/$/g, "");
-
-  // console.log(pathname);
-  // // Check if the council is in appConfig.councils
-  // if (appConfig.councils.includes(pathnameCouncil)) {
-  //   console.log(`Pathname matches one of the councils: ${council}`);
-  // } else {
-  //   console.log("Pathname does not match any council");
-  //   // return NextResponse.redirect(new URL("/404", request.url));
-  // }
-
-  return NextResponse.next();
 }

@@ -16,7 +16,7 @@ export default function CouncilListingPage({
   return (
     <>
       hello {council}
-      {appConfig?.council.name}
+      {appConfig?.council?.name}
     </>
   );
 }

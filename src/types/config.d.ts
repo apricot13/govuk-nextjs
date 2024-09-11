@@ -7,6 +7,7 @@ export interface AppConfig {
     documentsPublicEndpoint: boolean;
   };
   council: CouncilConfig | null;
+  resultsPerPage: number;
   navigation: {
     label: string;
     href: string;

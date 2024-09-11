@@ -32,7 +32,7 @@ export const ServiceNavigationMenu = ({
               : item.href;
 
           const active = pathname === href;
-          console.log(councilSlug);
+
           return (
             <li
               key={`service-nav-${index}`}
